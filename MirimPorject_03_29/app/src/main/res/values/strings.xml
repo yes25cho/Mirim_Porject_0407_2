@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MirimPorject_03_29</string>
+    <string name="btn1">네이버 홈페이지 열기</string>
+    <string name="btn2">친구에게 전화 걸기</string>
+    <string name="btn3">포토 열기</string>
+    <string name="btn4">끝내기</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mirim_App_0322_1</string>
+    <string name="btn_text">Button</string>
+    <string name="check_text">체크박스</string>
+    <string name="text_text">안드로이드 기초 B반 방과후학교</string>
+    <string name="switch_text">스위치</string>
+</resources>

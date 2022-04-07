@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">mirim_0324_1</string>
+    <string name="btn_text">버튼입니다.</string>
+    <string name="toast_text">버튼이 눌려졌습니다.</string>
+    <string name="check_text">체크 및 헤제</string>
+    <string name="checked_text">체크 박스가 체크되었습니다.</string>
+    <string name="unchecked_text">체크 박스가 헤제되었습니다.</string>
+</resources>

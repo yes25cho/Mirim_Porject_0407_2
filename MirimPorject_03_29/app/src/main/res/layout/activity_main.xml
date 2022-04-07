@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn1"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint= "@color/color_btn1"/>
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="@string/btn2"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint= "@color/color_btn2"/>
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="@string/btn3"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint= "@color/color_btn3"/>
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="@string/btn4"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint= "@color/color_btn4"/>
+
+
+</LinearLayout>

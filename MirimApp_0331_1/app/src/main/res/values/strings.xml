@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MirimApp_0331_1</string>
+    <string name="text_title">좋아하는 사람을 선택하세요</string>
+    <string name="radio_text1">이찬혁</string>
+    <string name="radio_text2">정경호</string>
+    <string name="radio_text3">아이유</string>
+</resources>

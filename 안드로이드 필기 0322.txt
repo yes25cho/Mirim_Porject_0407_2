@@ -1,0 +1,8 @@
+<Run app>
+install 파일빌드 : ~.apk
+↓
+~.apk파일을 AVD OR 스마트폰을 전송
+↓
+AVD OR  SMartPhone 에서 install설치
+↓
+런칭 엑티비티
