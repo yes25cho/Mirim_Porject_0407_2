@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             if(edit1Str.equals("") || edit2Str.equals("")){
                 Toast.makeText(getApplicationContext(),
                         "연산에 필요한 숫자가 입력되니 않습니다.",
-                        Toast.LENGTH_LONG);
+                        Toast.LENGTH_LONG).show();
                 return;
             }
             int num1 = Integer.parseInt(edit1Str);
