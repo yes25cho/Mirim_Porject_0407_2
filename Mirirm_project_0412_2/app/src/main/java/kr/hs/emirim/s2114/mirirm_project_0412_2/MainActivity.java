@@ -70,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }// Switch
             textResult.setText(R.string.text_result);
             textResult.append(" " + String.format("%.2f", result));
-
-
         }
     };
 
