@@ -56,28 +56,33 @@ public class MainActivity extends AppCompatActivity {
                     result = num1 * num2;
                     break;
                 case R.id.btn_divide:
-                    if(num2==0){
-                        Toast.makeText(getApplicationContext(),
-                                "0으로 나눌 수는 없습니다.",
-                                Toast.LENGTH_LONG).show();
+                    if(stop(num2)){
                         return;
                     }
                     result = num1 / num2;
                     break;
                 case R.id.btn_mod:
-                    if(num2==0){
-                        Toast.makeText(getApplicationContext(),
-                                "0으로 나눌 수는 없습니다.",
-                                Toast.LENGTH_LONG).show();
+                    if(stop(num2)){
                         return;
                     }
                     result = num1 % num2;
                     break;
             }// Switch
             textResult.setText(R.string.text_result);
-            textResult.append(" " + result);
+            textResult.append(" " + String.format("%.2f", result));
 
 
         }
     };
+
+    boolean stop(double num2){
+        boolean bl=false;
+        if(num2==0){
+            Toast.makeText(getApplicationContext(),
+                    "0으로 나눌 수는 없습니다.",
+                    Toast.LENGTH_LONG).show();
+            bl = true;
+        }
+        return bl;
+    }
 }
