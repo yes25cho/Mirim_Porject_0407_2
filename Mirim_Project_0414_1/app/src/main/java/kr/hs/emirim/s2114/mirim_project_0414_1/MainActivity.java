@@ -10,10 +10,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
     RadioGroup rg;
-    CheckBox checkStart;
+    Switch switchStart;
     ImageView imgv;
     LinearLayout linearsub;
 
@@ -23,16 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         linearsub = findViewById(R.id.linear_sub);
         rg = findViewById(R.id.rg);
-        checkStart = findViewById(R.id.check_start);
+        rg.setOnCheckedChangeListener(rgListener);
+        switchStart = findViewById(R.id.switch_start);
         imgv = findViewById(R.id.imgv);
-        Button btnDone = findViewById(R.id.but_done);
-        btnDone.setOnClickListener(btnListener);
-        checkStart.setOnCheckedChangeListener(checkListener);
+        switchStart.setOnCheckedChangeListener(switchListener);
     }
-    View.OnClickListener btnListener = new View.OnClickListener() {
+    RadioGroup.OnCheckedChangeListener rgListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
-        public void onClick(View view) {
-            switch (rg.getCheckedRadioButtonId()){
+        public void onCheckedChanged(RadioGroup radioGroup, int selectedId) {
+            switch (selectedId){
                 case R.id.rd_dog:
                     imgv.setImageResource(R.drawable.dog);
                     break;
@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    CompoundButton.OnCheckedChangeListener checkListener = new CompoundButton.OnCheckedChangeListener() {
+
+    CompoundButton.OnCheckedChangeListener switchListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
             if(isChecked){
