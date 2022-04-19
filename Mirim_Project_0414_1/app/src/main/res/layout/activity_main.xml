@@ -64,6 +64,11 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/dog"/>
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종료"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package kr.hs.emirim.s2114.mirim_project_0414_1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CancellationSignal;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
         rg.setOnCheckedChangeListener(rgListener);
         switchStart = findViewById(R.id.switch_start);
         imgv = findViewById(R.id.imgv);
-        switchStart.setOnCheckedChangeListener(switchListener);
+        Button btnFinish = findViewById(R.id.btn_finish);
+        btnFinish.setOnClickListener(btnListener);
     }
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    };
     RadioGroup.OnCheckedChangeListener rgListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int selectedId) {
