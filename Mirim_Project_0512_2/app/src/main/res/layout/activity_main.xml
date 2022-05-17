@@ -132,5 +132,4 @@
         android:textColor="#ff0000"
         android:textSize="30sp"
         android:text="계산결과 : "/>
-
 </LinearLayout>

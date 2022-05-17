@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText edit1, edit2;View textResult;
+    EditText edit1, edit2; TextView textResult;
     int[] btnNumId = {R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,
             R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9,};
     Button[] btnNum = new Button[btnNumId.length];
@@ -44,6 +44,35 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
         }
+        btnPlus.setOnClickListener(btnListener);
+        btnMinus.setOnClickListener(btnListener);
+        btnMulti.setOnClickListener(btnListener);
+        btnDivide.setOnClickListener(btnListener);
+
     }
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int n1 = Integer.parseInt(edit1.getText().toString());
+            int n2 = Integer.parseInt(edit2.getText().toString());
+            int result = 0;
+            switch(view.getId()){
+                case R.id.plus:
+                    result = n1+n2;
+                    break;
+                case R.id.minus:
+                    result = n1-n2;
+                    break;
+                case R.id.Multi:
+                    result = n1*n2;
+                    break;
+                case R.id.divide:
+                    result = n1/n2;
+                    break;
+            }
+            textResult.setText("결과 : "+result);
+        }
+    };
 }
