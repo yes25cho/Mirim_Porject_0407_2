@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ff0000"
+            android:layout_marginRight="5dp"
+            android:text="Red"
+            />
+        <Button
+            android:id="@+id/btn_yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ffff00"
+            android:textColor="#000000"
+            android:layout_marginRight="5dp"
+            android:text="yellow"
+            />
+        <Button
+            android:id="@+id/btn_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0000ff"
+            android:text="blue"
+            />
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+        <LinearLayout
+            android:id="@+id/linear_red"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff0000"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_yellow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffff00"
+            android:orientation="vertical">
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_blue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0000ff"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
