@@ -40,10 +40,11 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <CalendarView
+        <DatePicker
             android:id="@+id/date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"/>
         <TimePicker
             android:id="@+id/time"
             android:layout_width="match_parent"
