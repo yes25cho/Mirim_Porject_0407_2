@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Chronometer;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker time;
     DatePicker date;
     TextView textResult;
+    FrameLayout frame;
     int selectedYear, selectedMonth, selectedDay;
 
     @Override
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.time);
         date = findViewById(R.id.date);
         textResult = findViewById(R.id.text_result);
+        frame = findViewById(R.id.frame);
         timer.setOnClickListener(timerListener);
         textResult.setOnLongClickListener(textListener);
         rg.setOnCheckedChangeListener(rgListener);
@@ -45,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
         });
         time.setVisibility(View.INVISIBLE);
         date.setVisibility(View.INVISIBLE);
+        rg.setVisibility(View.INVISIBLE);
+        frame.setVisibility(View.INVISIBLE);
     }
     RadioGroup.OnCheckedChangeListener rgListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+            frame.setVisibility(View.VISIBLE);
             time.setVisibility(View.INVISIBLE);
             date.setVisibility(View.INVISIBLE);
             switch (checkedId){
@@ -66,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             timer.setBase(SystemClock.elapsedRealtime());
             timer.start();
+            rg.setVisibility(View.VISIBLE);
             timer.setTextColor(Color.RED);
         }
     };
@@ -75,26 +82,12 @@ public class MainActivity extends AppCompatActivity {
             timer.stop();
             timer.setTextColor(Color.BLUE);
             textResult.setText(selectedYear+"년 "+selectedMonth+"월 "+selectedDay+"일 ");
-            textResult.append(time.getCurrentHour()+"시 "+time.getCurrentMinute()+"분 예약 완료됨");
+            textResult.append(time.getCurrentHour()+"시 "
+                    +time.getCurrentMinute()+"분 예약 완료됨");
+            rg.setVisibility(View.INVISIBLE);
+            frame.setVisibility(View.INVISIBLE);
             return true;
         }
     };
-    View.OnClickListener btnListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.btn_start:
-                    timer.setBase(SystemClock.elapsedRealtime());
-                    timer.start();
-                    timer.setTextColor(Color.RED);
-                    break;
-                case R.id.btn_done:
-                    timer.stop();
-                    timer.setTextColor(Color.BLUE);
-                    textResult.setText(selectedYear+"년 "+selectedMonth+"월 "+selectedDay+"일 ");
-                    textResult.append(time.getCurrentHour()+"시 "+time.getCurrentMinute()+"분 예약 완료됨");
-                    break;
-            }
-        }
-    };
+
 }
