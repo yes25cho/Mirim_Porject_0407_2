@@ -13,17 +13,24 @@
         android:gravity="center"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_prev"
+            android:id="@+id/btn_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
-            android:text="이전화면"/>
+            android:text="시작"/>
         <Button
-            android:id="@+id/btn_next"
+            android:id="@+id/btn_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다음화면"/>
-
+            android:text="멈춤"/>
+        <Button
+            android:id="@+id/btn_intervel"
+            android:inputType="number"
+            android:layout_marginLeft="80dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="설정(초)"
+            />
     </LinearLayout>
     <ViewFlipper
         android:id="@+id/vFlip"
@@ -62,8 +69,5 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/img"/>
         </LinearLayout>
-
     </ViewFlipper>
-
-
 </LinearLayout>
