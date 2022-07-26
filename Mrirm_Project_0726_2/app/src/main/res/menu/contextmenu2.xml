@@ -5,6 +5,8 @@
         android:title="버튼_회전"/>
     <item
         android:id="@+id/item_btn_zoom"
-        android:title="버트_확대"/>
-
+        android:title="버튼_확대"/>
+    <item
+        android:id="@+id/item_btn_re"
+        android:title="버튼_원래대로"/>
 </menu>
