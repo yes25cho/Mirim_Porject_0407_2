@@ -9,6 +9,35 @@
     android:background="#673AB7"
     android:gravity="center_horizontal"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목 : "/>
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/rg_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="second 액티비티"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rg_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Third 액티비티"/>
+    </RadioGroup>
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
