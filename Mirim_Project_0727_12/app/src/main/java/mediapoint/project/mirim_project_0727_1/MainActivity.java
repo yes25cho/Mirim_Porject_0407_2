@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textName, textEmail;
+    EditText textName, textEmail;
     EditText dlgEditName, dlgEditEmail;
     TextView toastText;
     View dlgView, toastView;
