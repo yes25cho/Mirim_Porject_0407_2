@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp"
-    android:background="#673AB7"
     android:gravity="center_horizontal"
-    tools:context=".MainActivity">
+    android:padding="30dp"
+    android:background="#AAAAff"
+    android:orientation="vertical"
+    tools:context=".SecondActivity">
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_prov"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="새로운 Activiity 시작 "/>
-
+        android:text="이전으로"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/img"/>
 </LinearLayout>
