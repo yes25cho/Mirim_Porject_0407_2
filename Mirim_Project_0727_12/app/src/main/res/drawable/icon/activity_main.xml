@@ -26,7 +26,6 @@
         android:textSize="25sp"
         android:textColor="#03A9F4"/>
     <Button
-        android:id="@+id/btn_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="사용자정보입력"/>
