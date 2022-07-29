@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android/Mirim_Project_2022_0729/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Android/Mirim_Project_2022_0729/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Android/Mirim_Project_2022_0729/app/src/main/res/layout/activity_second.xml" value="0.14130434782608695" />
       </map>
     </option>
@@ -17,7 +17,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.14130434782608695" />
+        <option name="scale" value="0.22" />
       </ProjectState>
     </option>
   </component>

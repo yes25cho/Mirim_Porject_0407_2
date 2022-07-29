@@ -7,18 +7,33 @@ import android.os.Bundle;
 import android.view.RoundedCorner;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class SecondActivity extends AppCompatActivity {
-    int sum;
-
+    int sum, num1, num2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Intent intent = getIntent();
-        int num1 = intent.getIntExtra("num1", 0);
-        int num2 = intent.getIntExtra("num2", 0);
-        sum = num1+num2;
+        num1 = intent.getIntExtra("num1", 0);
+        num2 = intent.getIntExtra("num2", 0);
+        int op = intent.getIntExtra("op",0);
+        switch (op) {
+            case MainActivity.PLUS:
+                sum = num1 + num2;
+                break;
+            case MainActivity.MINUS:
+                sum = num1 - num2;
+                break;
+            case MainActivity.MULTI:
+                sum = num1 * num2;
+                break;
+            case MainActivity.DIVIDE:
+                sum = num1 / num2;
+                break;
+        }
         Button backBtn = findViewById(R.id.btn_back);
         backBtn.setOnClickListener(backBtnListener);
     }
