@@ -1,5 +1,6 @@
 package mediapoint.project.mirim_project_0803_sqlite;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     DBHelper dbHelper;
     EditText editName, editNum, editResultName, editResultNum;
+    Button btnSelect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
         editResultNum = findViewById(R.id.num);
         Button btnInit = findViewById(R.id.btn_reset);
         Button btnInsert = findViewById(R.id.btn_input);
-        Button btnSelect = findViewById(R.id.btn_such);
+        btnSelect = findViewById(R.id.btn_such);
+        Button btnUpdate = findViewById(R.id.btn_update);
+        Button btnDelete = findViewById(R.id.btn_delete);
         dbHelper = new DBHelper(this);
         btnInit.setOnClickListener(btnListener);
         btnInsert.setOnClickListener(btnListener);
         btnSelect.setOnClickListener(btnListener);
+        btnUpdate.setOnClickListener(btnListener);
+        btnDelete.setOnClickListener(btnListener);
     }
     View.OnClickListener btnListener = new View.OnClickListener() {
         SQLiteDatabase db;
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     db = dbHelper.getWritableDatabase();
                     dbHelper.onUpgrade(db, 1, 2);
                     db.close();
+                    btnSelect.callOnClick();
                     break;
                 case R.id.btn_input:
                     db = dbHelper.getWritableDatabase();
@@ -51,6 +58,26 @@ public class MainActivity extends AppCompatActivity {
                             "입력됨", Toast.LENGTH_SHORT).show();
                     editName.setText("");
                     editNum.setText("");
+                    btnSelect.callOnClick();
+                    break;
+                case R.id.btn_update:
+                    db = dbHelper.getWritableDatabase();
+                    db.execSQL("update idolTbl set name ='"+
+                            editNum.getText().toString()+"' where cnt ="+
+                            editNum.getText().toString()+";)");
+                    btnSelect.callOnClick();
+                    editName.setText("");
+                    editNum.setText("");
+                    db.close();
+                    break;
+                case R.id.btn_delete:
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this,);
+                    db = dbHelper.getWritableDatabase();
+                    db.execSQL("delete from idolTbl where name = "+editNum.getText().toString()+";");
+                    btnSelect.callOnClick();
+                    editName.setText("");
+                    editNum.setText("");
+                    db.close();
                     break;
                 case R.id.btn_such:
                     db = dbHelper.getReadableDatabase();
