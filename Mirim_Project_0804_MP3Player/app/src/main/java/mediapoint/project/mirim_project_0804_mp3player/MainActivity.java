@@ -8,23 +8,29 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.google.android.material.timepicker.TimeFormat;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.SimpleTimeZone;
 
 public class MainActivity extends AppCompatActivity {
     ListView list1;
     Button btnPlay, btnStop, btnPause;
-    TextView textMusic;
-    ProgressBar proBar;
+    TextView textMusic, tvTime;
+    SeekBar seekBar;
     ArrayList<String> musicList;
     String selectedMusic;
     String musicPath = Environment.getExternalStorageDirectory().getPath()+"/";
@@ -43,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
         btnStop = findViewById(R.id.btn_stop);
         btnPause = findViewById(R.id.btn_pause);
         textMusic = findViewById(R.id.tvMP3);
-        proBar = findViewById(R.id.pro_bar);
-
+        tvTime = findViewById(R.id.tvTiem);
+        seekBar = findViewById(R.id.seek_bar);
+        btnPlay.setClickable(true);
+        btnStop.setClickable(false);
+        btnPause.setClickable(false);
         musicList = new ArrayList<String>();
         File[] files = new File(musicPath).listFiles();
         String fileName, extName;
@@ -80,10 +89,31 @@ public class MainActivity extends AppCompatActivity {
                     btnStop.setClickable(true);
                     btnPause.setClickable(true);
                     textMusic.setText("실행중인 음악 : " + selectedMusic);
-                    proBar.setVisibility(View.VISIBLE);
+                    seekBar.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                new Thread(){
+                    SimpleDateFormat timeFormat  = new SimpleDateFormat("mm:ss");
+                    @Override
+                    public void run() {
+                        if(mPlayer == null){
+                            return;
+                        }
+                        seekBar.setMax(mPlayer.getDuration());
+                        while(mPlayer.isPlaying()){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    seekBar.setProgress(mPlayer.getCurrentPosition());
+                                    tvTime.setText("진행시간 : "+ timeFormat.format(mPlayer.getCurrentPosition()));
+                                }
+                            });
+                            SystemClock.sleep(200);
+                        }
+                    }
+                }.start();
             }
         });
         btnStop.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +122,16 @@ public class MainActivity extends AppCompatActivity {
                 mPlayer.stop();
                 mPlayer.reset();
                 btnPlay.setClickable(true);
-                btnPlay.setClickable(false);
+                btnStop.setClickable(false);
                 btnPause.setClickable(false);
+                btnPause.setText("일시정지");
                 textMusic.setText("실행중인 음악 : ");
-                proBar.setVisibility(View.INVISIBLE);
+                tvTime.setText("진행시간 : ");
+                seekBar.setProgress(0);
             }
         });
         btnStop.setClickable(false);
+
         btnPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,13 +139,33 @@ public class MainActivity extends AppCompatActivity {
                     mPlayer.start();
                     btnPause.setText("일시정지");
                     textMusic.setText("실행중인 음악 : " + selectedMusic);
+                    new Thread(){
+                        SimpleDateFormat timeFormat  = new SimpleDateFormat("mm:ss");
+                        @Override
+                        public void run() {
+                            seekBar.setMax(mPlayer.getDuration());
+                            while(mPlayer.isPlaying()){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        seekBar.setProgress(mPlayer.getCurrentPosition());
+                                        tvTime.setText("진행시간 : "+ timeFormat.format(mPlayer.getCurrentPosition()));
+                                    }
+                                });
+                                SystemClock.sleep(200);
+                            }
+                        }
+                    }.start();
                 }
                 else {
                     mPlayer.pause();
                     btnPause.setText("다시시작");
                     textMusic.setText("일시정지 중인 음안 : " + selectedMusic);
                 }
+
             }
         });
+
+
     }
 }
